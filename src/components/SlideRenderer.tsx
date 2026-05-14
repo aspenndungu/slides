@@ -47,11 +47,45 @@ const PhoneUI = ({ caption }: { caption: string }) => (
   </div>
 );
 
+const UIMock = ({ name, color = "accent", items }: { name: string, color?: string, items: string[] }) => (
+  <div className="w-full bg-black/40 rounded-3xl border border-white/10 overflow-hidden shadow-2xl backdrop-blur-md">
+    <div className="p-4 border-b border-white/10 flex items-center justify-between">
+      <div className="flex gap-1.5">
+        <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
+        <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
+      </div>
+      <div className="font-mono text-[8px] uppercase tracking-widest opacity-40">{name} Dashboard</div>
+      <div className="w-4 h-4 rounded bg-white/5" />
+    </div>
+    <div className="p-6 space-y-4">
+      {items.map((item, i) => (
+        <div key={i} className="flex items-center gap-3">
+          <div className={cn("w-2 h-2 rounded-full", i === 0 ? `bg-${color}` : "bg-white/20")} />
+          <div className="h-1.5 flex-1 bg-white/5 rounded-full overflow-hidden">
+            <motion.div 
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              transition={{ delay: i * 0.1, duration: 1 }}
+              className={cn("h-full", i === 0 ? `bg-${color}` : "bg-white/10")} 
+            />
+          </div>
+          <div className="font-mono text-[8px] opacity-30">{item}</div>
+        </div>
+      ))}
+      <div className="pt-4 grid grid-cols-2 gap-2">
+        <div className="h-12 rounded-xl bg-white/5 border border-white/5" />
+        <div className="h-12 rounded-xl bg-white/5 border border-white/5" />
+      </div>
+    </div>
+  </div>
+);
+
 export const SlideRenderer = ({ slide }: { slide: SlideData }) => {
   return (
     <div className={cn(
       "grid gap-12 items-center flex-1",
-      slide.type === "title" || slide.type === "proof" || slide.type === "problem" || slide.type === "schema" || slide.type === "verdict" || slide.type === "winner" ? "lg:grid-cols-2" : "grid-cols-1"
+      slide.type === "title" || slide.type === "proof" || slide.type === "problem" || slide.type === "schema" || slide.type === "verdict" || slide.type === "winner" || slide.type === "chapters" ? "lg:grid-cols-2" : "grid-cols-1"
     )}>
       
       <motion.div
@@ -108,7 +142,48 @@ export const SlideRenderer = ({ slide }: { slide: SlideData }) => {
           </div>
         )}
 
-        {slide.cards && (
+        {slide.type === "chapters" && slide.id === "s05b" && (
+          <div className="flex flex-col items-center gap-6">
+            <div className="flex gap-1 h-32 items-center">
+              {[...Array(20)].map((_, i) => (
+                <motion.div 
+                  key={i}
+                  animate={{ 
+                    height: [20, Math.random() * 100 + 20, 20],
+                    backgroundColor: i > 10 ? "#ff3b2e" : "#3b82f6"
+                  }}
+                  transition={{ repeat: Infinity, duration: 0.5, delay: i * 0.05 }}
+                  className="w-2 rounded-full"
+                />
+              ))}
+            </div>
+            <Badge variant="accent">Angry Customer Stress Test</Badge>
+          </div>
+        )}
+
+        {slide.type === "chapters" && slide.id === "s03b" && (
+          <div className="relative">
+            <PhoneUI caption="Test 1: Vapi" />
+            <motion.div 
+              initial={{ x: 20, y: 20, opacity: 0 }}
+              whileInView={{ x: 40, y: 40, opacity: 1 }}
+              className="absolute inset-0"
+            >
+              <PhoneUI caption="Test 2: Retell" />
+            </motion.div>
+          </div>
+        )}
+
+        {slide.type === "chapters" && slide.id === "s01b" && (
+          <div className="grid grid-cols-2 gap-6 scale-90 -rotate-2">
+            <UIMock name="Vapi" color="accent-blue" items={["IVR Node A", "IVR Node B", "TTS Custom"]} />
+            <div className="translate-y-12 rotate-3">
+              <UIMock name="Retell" color="accent" items={["Agent Start", "Webhook URL", "Voice ID"]} />
+            </div>
+          </div>
+        )}
+
+        {slide.cards && (slide.type !== "chapters" || !["s01b", "s03b", "s05b"].includes(slide.id)) && (
           <div className={cn("grid gap-4", slide.type === "chapters" ? "grid-cols-1" : "lg:grid-cols-2")}>
              {slide.cards.map((card, i) => (
                <div key={i} className="p-6 rounded-3xl bg-white/5 border border-white/10 flex items-center gap-6 hover:border-accent/40 transition-all group">

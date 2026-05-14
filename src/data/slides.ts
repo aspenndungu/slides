@@ -70,6 +70,20 @@ export const SLIDES: SlideData[] = [
     screen: "Zoom in on n8n canvas. Highlight the 4 nodes as they are spoken. SFX: Pop, Pop, Pop, Pop."
   },
   {
+    id: "s01b",
+    type: "chapters",
+    ghost: "ROUND 1",
+    kicker: "01:00 - 02:00",
+    title: "ROUND 1: SETUP & CUSTOMIZATION",
+    desc: "Evaluating the developer experience and system flexibility.",
+    cards: [
+      { t: "Vapi UI", d: "Developer-first, deep IVR trees, exact pronunciation.", i: Settings },
+      { t: "Retell UI", d: "User-friendly, rapid deployment, clean interface.", i: Layout }
+    ],
+    say: "Round one: The Setup. Both platforms let you paste in a prompt in minutes. But Vapi's developer experience is on another level.",
+    screen: "Split screen. Vapi UI on left, Retell UI on right."
+  },
+  {
     id: "s03",
     type: "proof",
     light: true,
@@ -84,6 +98,20 @@ export const SLIDES: SlideData[] = [
     },
     say: "Round one: The Setup. Both platforms let you paste in a prompt in minutes. But Vapi's developer experience is on another level. From complex IVR trees to exact pronunciation, Vapi gives you ultimate control.",
     screen: "Punch-in on Vapi's advanced IVR and routing settings. Graphic: Scoreboard Ding."
+  },
+  {
+    id: "s03b",
+    type: "chapters",
+    ghost: "ROUND 2",
+    kicker: "02:00 - 03:15",
+    title: "ROUND 2: THE PERFECT BOOKING",
+    desc: "A live test to measure booking accuracy and conversational latency.",
+    cards: [
+      { t: "Test 1: Vapi", d: "Monitoring n8n webhooks and execution speed.", i: Phone },
+      { t: "Test 2: Retell", d: "Measuring turn-taking and natural flow.", i: Mic2 }
+    ],
+    say: "Round two: The Live Call. Let's see how Vapi handles a standard booking... and then, the exact same script, using Retell.",
+    screen: "Creator holding up a phone on speaker. Text overlay: Test 1: Vapi, then Test 2: Retell."
   },
   {
     id: "s04",
@@ -109,6 +137,20 @@ export const SLIDES: SlideData[] = [
     ],
     say: "Both achieved the goal, but Retell takes Round 2 for the conversational speed. We are currently 1 to 1.",
     screen: "Show table. Update scoreboard to 1-1."
+  },
+  {
+    id: "s05b",
+    type: "chapters",
+    ghost: "ROUND 3",
+    kicker: "03:15 - 04:30",
+    title: "ROUND 3: THE STRESS TEST",
+    desc: "The Tiebreaker. Can they handle an angry customer and an interruption?",
+    cards: [
+      { t: "Vapi Call", d: "Response to frustration and handoff request.", i: History },
+      { t: "Retell Call", d: "Interruption detection and emotional matching.", i: MessageSquare }
+    ],
+    say: "It is one to one. Whoever wins this stress test runs my business. What happens when the customer gets frustrated and demands a human?",
+    screen: "Creator looking serious. Prepare for the 'Angry Customer' audio comparison."
   },
   {
     id: "s06",
